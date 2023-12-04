@@ -1,0 +1,1 @@
+export const generateApiUrl = (apiKey, heroPhotoId) => `https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${apiKey}&photo_id=${heroPhotoId}&extras=url_b&format=json&nojsoncallback=1`;
