@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createFlickr } from "flickr-sdk"
+// import { createFlickr } from "flickr-sdk"
 
 export const HeroImage = () => {
     const [backgroundImage, setBackgroundImage] = useState('');
@@ -28,14 +28,26 @@ export const HeroImage = () => {
     useEffect(() => {
         const apiKey = '5018ebf848215c876989ce7422fc5a78';
         const photoId = '53252681097';
-        const apiUrl = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${apiKey}&photo_id=${photoId}&extras=url_b&format=json&nojsoncallback=1`;
+        const apiUrl = `https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${apiKey}&photo_id=${photoId}&extras=url_b&format=json&nojsoncallback=1`;
 
         fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            const photoInfo = data.photo;
-            const imageUrl = `https://farm${photoInfo.farm}.staticflickr.com/${photoInfo.server}/${photoInfo.id}_${photoInfo.secret}.jpg`;
-            setBackgroundImage(imageUrl);
+            // const photoInfo = data.photo;
+            // const imageUrl = `https://farm${photoInfo.farm}.staticflickr.com/${photoInfo.server}/${photoInfo.id}_${photoInfo.secret}.jpg`;
+            // setBackgroundImage(imageUrl);
+            const sizes = data.sizes.size;
+            const desiredSize = sizes.find(size => size.label === 'Large 2048');
+
+            if (desiredSize) {
+                const imageUrl = desiredSize.source; // URL for the desired size
+                // Use 'imageUrl' in your application
+                setBackgroundImage(imageUrl);
+              }
+              else {
+                const imageUrl = sizes.slice(-1)[0].source;
+                setBackgroundImage(imageUrl);
+              }
         })
         .catch(error => {
             console.error('Error fetcching photo info', error);
