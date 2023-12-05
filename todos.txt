@@ -1,0 +1,17 @@
+- https://www.flickr.com/services/api/auth.oauth.html add OATH for api requests like get collections
+
+- add a fallback hero image or SSR
+
+- switch from flickr to a cdn:
+    Cloudinary: It provides cloud-based image and video management services, offering features like automatic format conversion, optimization, resizing, and responsive delivery.
+
+    Amazon CloudFront: Part of Amazon Web Services (AWS), CloudFront is a scalable CDN that can deliver images and other content globally with low latency.
+
+    Akamai: A global CDN that offers a wide range of content delivery services, including image optimization and acceleration.
+
+    Cloudflare: Known for its web security services, Cloudflare also offers CDN services, including image optimization, caching, and fast global delivery.
+
+    Google Cloud CDN: Part of Google Cloud Platform, it's designed for low-latency content delivery through Google's global network.
+ (will have to switch code from flickr api)
+
+ 
